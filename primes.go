@@ -89,7 +89,7 @@ func main() {
   fmt.Printf("Finding all primes <= %v\n", *limit)
   start := time.Now()
 
-  sieve(uint64(*limit), primes)
+  sieve(*limit, primes)
 
   fmt.Printf("Done in %v.\n", time.Since(start))
 
