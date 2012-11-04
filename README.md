@@ -20,6 +20,10 @@ primes [-l limit] [-s]
   * -l limit *(default 100000)* Upper limit for prime searching
   * -s *(default false)* Save the prime numbers to primes.txt
 
+### Running tests
+
+    $ go test
+
 ### Speed
 
 These are some non-accurate benchmarks I ran on my machine.
@@ -36,9 +40,9 @@ Ram usage and CPU time for finding primes up to:
 
            1'000'000    <1MB 2ms
           10'000'000    <1MB 26ms
-         100'000'000   7.4MB 401ms
-       1'000'000'000  61.2MB 9.01s
-      10'000'000'000 599.8MB 1m51s
+         100'000'000   7.4MB 397ms
+       1'000'000'000  61.2MB 8.72s
+      10'000'000'000 599.8MB 1m49s
 
 ### License
 
