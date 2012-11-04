@@ -45,6 +45,7 @@ func Test_Sieve(t *testing.T) {
     sieve(limit, primes)
 
     m := md5.New()
+    fmt.Fprintln(m, 2)
     saveTo(m, primes)
     hash := fmt.Sprintf("%x", m.Sum(nil))
 
