@@ -59,8 +59,7 @@ func Test_Sieve(t *testing.T) {
 }
 
 func Benchmark_Primes(b *testing.B) {
-	b.StopTimer()
 	primes := allocate(uint64(b.N))
-	b.StartTimer()
+	b.ResetTimer()
 	sieve(uint64(b.N), primes)
 }
