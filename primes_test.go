@@ -32,6 +32,7 @@ func Test_Allocate(t *testing.T) {
 
 func Test_Sieve(t *testing.T) {
   var expected = map[uint64] string {
+    1: "26ab0db90d72e28ad0ba1e22ee510510",
     100: "45d886e08500b82881519d5cf5cbe1d6",
     1000: "2d2382f376350089fd94503d7da478db",
     10000: "c37d039ddada44d3976ed948c3d0ef21",
