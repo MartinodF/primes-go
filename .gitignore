@@ -1,4 +1,6 @@
-a.out*
-primes
-primes.exe
+*.out*
+
+primes-go
+primes-go.exe
+
 primes.txt
