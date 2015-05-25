@@ -1,10 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"io"
-)
-
 func allocate(limit uint64) []uint64 {
 	bits := (limit - 1) / 2
 
@@ -51,16 +46,6 @@ func sieve(limit uint64, primes []uint64) {
 				// mark all odd multiples from i*i to limit as composites
 				p := uint64((sqr - 3) / 2)
 				primes[p/64] |= (1 << (p % 64))
-			}
-		}
-	}
-}
-
-func saveTo(w io.Writer, primes []uint64) {
-	for k, p := range primes {
-		for l := uint8(0); l < 64; l++ {
-			if (p>>l)&1 == 0 {
-				fmt.Fprintln(w, (k*64+int(l))*2+3)
 			}
 		}
 	}

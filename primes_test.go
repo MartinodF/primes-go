@@ -47,7 +47,15 @@ func Test_Sieve(t *testing.T) {
 
 		m := md5.New()
 		fmt.Fprintln(m, 2)
-		saveTo(m, primes)
+
+		for k, p := range primes {
+			for l := uint8(0); l < 64; l++ {
+				if (p>>l)&1 == 0 {
+					fmt.Fprintln(m, (k*64+int(l))*2+3)
+				}
+			}
+		}
+
 		hash := fmt.Sprintf("%x", m.Sum(nil))
 
 		if hash != md5sum {

@@ -5,9 +5,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/cheggaaa/pb"
 )
 
 func main() {
@@ -40,15 +43,33 @@ func main() {
 		}
 		defer file.Close()
 
-		fmt.Printf("\nSaving to primes.txt...\n")
+		fmt.Printf("\nSaving them to primes.txt\n")
 		start := time.Now()
 
 		if *limit >= 2 {
 			fmt.Fprintln(file, 2)
 		}
 
-		saveTo(file, primes)
+		output(file, primes)
 
 		fmt.Printf("Done in %v.\n", time.Since(start))
 	}
+}
+
+func output(w io.Writer, primes []uint64) {
+	bar := pb.StartNew(len(primes))
+	bar.SetMaxWidth(80)
+	bar.ShowCounters = false
+
+	for k, p := range primes {
+		bar.Increment()
+
+		for l := uint8(0); l < 64; l++ {
+			if (p>>l)&1 == 0 {
+				fmt.Fprintln(w, (k*64+int(l))*2+3)
+			}
+		}
+	}
+
+	bar.Finish()
 }
